@@ -1,6 +1,6 @@
 {
   "name": "@andideve/ds-drawer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "homepage": "https://github.com/andideve/ds-drawer",
   "bugs": "https://github.com/andideve/ds-drawer/issues",
@@ -19,6 +19,9 @@
     "build": "tsc",
     "storybook": "start-storybook -p 3000 -s public",
     "build-storybook": "build-storybook -s public"
+  },
+  "dependencies": {
+    "@andideve/ds-hooks": "^0.1.0"
   },
   "peerDependencies": {
     "@andideve/ds-box": "^0.1.0",

@@ -1,34 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { forwardRef, useState, useEffect } from 'react';
+import React, { forwardRef } from 'react';
 import { Box } from '@andideve/ds-box';
+import { useUnmountOverlay } from '@andideve/ds-hooks/dist/use-unmount-overlay';
 
 import DrawerMotion from './drawer-motion';
 import defaults from './drawer.defaults';
 import { DrawerPlacements, DrawerProps } from './drawer.types';
-
-function useTransitionState(isChange: boolean, duration: number) {
-  const [state, setState] = useState<'start' | 'end'>('end');
-
-  useEffect(() => {
-    setState('start');
-    const timeoutId = setTimeout(() => setState('end'), duration);
-    return () => clearTimeout(timeoutId);
-  }, [isChange]);
-
-  return state;
-}
-
-function useUnmountOverlay(isOpen: boolean, duration: number) {
-  const [shouldUnmount, setShouldUnmount] = useState(!isOpen);
-
-  const state = useTransitionState(isOpen, duration);
-
-  useEffect(() => {
-    setShouldUnmount(!isOpen && state === 'end');
-  }, [state]);
-
-  return shouldUnmount;
-}
 
 const insetDefaults: Record<DrawerPlacements, DrawerProps['inset']> = {
   top: { top: 0, left: 0, right: 0 },
